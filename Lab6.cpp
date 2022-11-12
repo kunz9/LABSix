@@ -73,18 +73,20 @@ void Output(int count, int base, bool firstDig, bool badDig, char bi)
 					base++;
 				}
 			}
+	
 			//Safe cause for getting a bad digit
-			else if (bi != ' ' || (bi == ' ' && firstDig))
+			else if (bi != ' '|| (bi == ' ' && firstDig))
 			{
-				for (int i = 0; i < count; i++)//deletes number off screen using backspaces
+				for (int i = 0; i < (count); i++)//deletes number off screen using backspaces
 					cout << '\b';
 				cout << setw(15 - (count / 2)) << "Bad Digit On Input\n";
 				badDig = true;
-				infile.ignore(500, '\n');//Once bi is invalid it will ignore till a new end of line is reachd then breaks out of loop
+				infile.ignore(500, '\n');//Once bi is invalid it will ignore till a new end of line is reachd then breaks out of statement
 				break;
 			}		
 			infile.get(bi);//Gets Next number in sequence
 		}
+
 		if (!badDig)
 		{
 			for (int i = 0; i < (40 - count); i++)
